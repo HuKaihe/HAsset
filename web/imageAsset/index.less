@@ -1,0 +1,89 @@
+@import (multiple) "../common/base.less";
+.hasset-container {
+    overflow: hidden;
+    width: 1200px;
+    margin: 20px auto;
+}
+
+.image-gallery,
+.null-image {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 25px 10px;
+    min-height: 200px;
+    margin-top: 20px;
+    border: 1px solid #c2e3fd;
+    border-radius: 10px;
+}
+
+.image-gallery>li {
+    margin: 15px;
+    border-radius: 3px;
+    .card {
+        position: relative;
+        &:hover .remove-image {
+            opacity: 1;
+        }
+        .remove-image {
+            .center;
+            position: absolute;
+            top: -7px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            color: @gray_5;
+            background-color: @white;
+            opacity: 0;
+            box-shadow: 2px 2px 2px @gray_4;
+            &:hover {
+                color: @red;
+            }
+        }
+        .image-bg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 150px;
+            background: @gray_2;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        .card-operate {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            width: 100%;
+            height: 25px;
+            color: @white;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 12px;
+            li {
+                width: 50%;
+                border-right: 1px solid @gray_2;
+                a,
+                button {
+                    .center;
+                    width: 100%;
+                    height: 100%;
+                    transition: all 0.25s;
+                }
+                a:hover,
+                button:hover {
+                    background-color: rgba(216, 216, 216, 0.5);
+                    border: none;
+                }
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+.null-image {
+    background: url('http://127.0.0.1:7006/public/images/hasset/null-image.png') center / 200px no-repeat;
+}

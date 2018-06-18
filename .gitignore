@@ -1,0 +1,21 @@
+logs/
+npm-debug.log
+yarn-error.log
+node_modules/
+package-lock.json
+yarn.lock
+coverage/
+.idea/
+run/
+.vscode/
+.DS_Store
+*.sw*
+*.un~
+
+app/public/images/upload/*.*
+app/public/build/*.*
+app/public/system/*.*
+app/public/resource/*.*
+.config.js
+# 任意路径下的.gitkeep都不被忽略
+!**/.gitkeep
