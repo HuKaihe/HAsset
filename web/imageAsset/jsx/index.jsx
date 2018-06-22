@@ -9,7 +9,7 @@ import DragUploader from '../../common/DragUploader/DragUploader';
 import ImageGallery from './ImageGallery';
 
 import { deepCloneObj, post } from '../../service/service';
-
+import imageType from '../../config/imageType';
 
 class HAsset extends Component {
     static propTypes = {}
@@ -21,6 +21,20 @@ class HAsset extends Component {
             user_id: '10001',
             user_name: '恩言',
         },
+    }
+
+    beforeUpload = (file) => {
+        const validType = imageType.indexOf(file.type) !== -1;
+        if (!validType) {
+            message.error('这里只能上传图片资源，支持的格式有jpg/jpeg、png、gif');
+            return false;
+        }
+        const isLt5M = file.size / 1024 / 1024 < 5;
+        if (!isLt5M) {
+            message.error('图片体积最大为5MB');
+            return false;
+        }
+        return true;
     }
 
     handleUpload = (info) => {
@@ -60,7 +74,8 @@ class HAsset extends Component {
                     <DragUploader
                         action="/uploadImage"
                         uploadText="轻点或拖拽以上传图片"
-                        uploadHint="图片最大体积为5M；注意，在此处图片上传后全网可见，不可删除，请勿上传任何机密图片"
+                        uploadHint="在此处图片上传后全网可见，不可删除，请勿上传任何机密图片"
+                        beforeUpload={this.beforeUpload}
                         handleUpload={this.handleUpload}
                     />
                 </Affix>

@@ -15,8 +15,9 @@ function DragUploader(props) {
             name="file"
             multiple
             action={action}
+            beforeUpload={props.beforeUpload}
             onChange={props.handleUpload}
-            showUploadList={false}
+            // showUploadList={false}
         >
             <p className="ant-upload-drag-icon">
                 <Icon type="inbox" />
